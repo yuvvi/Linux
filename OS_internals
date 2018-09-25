@@ -1,0 +1,18 @@
+
+1. 
+  can list /lib and /usr/lib explicitly in /etc/ld.so.conf
+  or one of the files in /etc/ld.so.conf.d,
+  that way directories coming after those two will have lower priority in the search.
+
+  Something like this:
+
+  # contents of /etc/ld.so.conf
+  /lib
+  /usr/lib
+  /ParanoidAndroid
+  Don't forget to:
+
+  $ sudo ldconfig
+  And you can check that with:
+
+  $ ldconfig -v
