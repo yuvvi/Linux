@@ -16,3 +16,16 @@
   And you can check that with:
 
   $ ldconfig -v
+  
+    Default paths: /lib (used for libraries of system packages),
+    and then /usr/lib (possible location for the libraries of non-system packages).
+    
+2. LDCONFIG INPUT
+  
+  ldconfig needs to know what directories to survey. By default it surveys “trusted directories” /lib and /usr/lib.
+  In addition, ldconfig consults configuration file /etc/ld.so.conf, a text file which provides a list of directories to survey.
+  
+  According to one convention, ld.so.conf contains an instruction: “include /etc/ld.so.conf.d/*.conf“,
+  establishing a directory in which new packages can place their own xyz.conf file to make their own lib directories available.
+  
+  
