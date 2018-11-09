@@ -1,0 +1,27 @@
+1.Frame count
+	ffmpeg -i /share/mars-india/ayuvara/videos/videoFiles/20170710_123520_VideoFront_S257_A3_V180800.mpg -f null /dev/null 2>&1
+	
+2. video to frames
+	$nohup ./ffmpeg -i /share/mars-india/ayuvara/videos/20170710_123520_VideoFront_S257_A3_V180800.mpg /share/mars-india/ayuvara/videos/20170710_123520_VideoFront_S257_A3_V180800/V180800_%06d.jpg	
+	
+3. set video bitRate to 64kbps
+ffmpeg -i /share/mars-india/ayuvara/videos/ffmpegTest/20170710_123520_VideoFront_S257_A3_V180800.mpg -b:v 64k -bufsize 64k /share/mars-india/ayuvara/videos/ffmpegTest/64kbps.mpg 
+
+4. 
+ffmpeg -i /share/mars-india/ayuvara/videos/ffmpegTest/20170710_123520_VideoFront_S257_A3_V180800.mpg -r 24 /share/mars-india/ayuvara/videos/ffmpegTest/output_24fpS_FrameRate.mpg
+
+
+
+ffmpeg -i /share/mars-india/ayuvara/videos/ffmpegTest/20170710_123520_VideoFront_S257_A3_V180800.mpg 2>&1 | sed -n "s/.*, \(.*\) fp.*/\1/p"
+
+
+5. frames to video
+ffmpeg -r 60 -f image2 -s 1920x1080 -i cat_%04d.png -vcodec libx264 -pix_fmt yuv420p cat_video_420p.mp4 --enable-decoder=mjpeg,png,jpg --enable-demuxer=image2 --enable-protocol=file --enable-zlib
+
+ffmpeg -framerate 25 -pattern_type glob -i '*.png' -c:v libx264 -r 30 -pix_fmt yuv420p out.mp4
+ffmpeg -r 25 -pattern_type glob -i '*.jpg' -vcodec XVID out.mpeg
+
+
+
+6. Resize images
+ffmpeg -i cat_0019.jpg -vf scale=640:480 output_0019_320x240.jpg
