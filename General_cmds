@@ -1,0 +1,8 @@
+1. RSYNC copy
+
+    $rsync -rP -u -z <source path >   <Destination path>
+
+2. SCP copy
+
+    $scp source username@destinationIP:/home/
+    
