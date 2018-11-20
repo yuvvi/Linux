@@ -6,3 +6,6 @@
 
     $scp source username@destinationIP:/home/
     
+3. filter similar lines in a file
+    $cat 1_txt_CSV.txt | awk -F " " '{print $9}' | sed -e "s/[0-9]//g" | sort -u > txt_different_file.txt
+    
